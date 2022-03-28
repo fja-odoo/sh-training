@@ -1,0 +1,35 @@
+<odoo>
+    <data noupdate="1">
+
+          <record id="training0" model="training.training">
+            <field name="name">Training 0</field>
+            <field name="value">0</field>
+            <field name="max_attendees">10</field>
+          </record>
+
+          <record id="training1" model="training.training">
+            <field name="name">Training 1</field>
+            <field name="value">10</field>
+            <field name="max_attendees">10</field>
+          </record>
+
+          <record id="training2" model="training.training">
+            <field name="name">Training 2</field>
+            <field name="value">20</field>
+            <field name="max_attendees">10</field>
+          </record>
+
+          <record id="training3" model="training.training">
+            <field name="name">Training 3</field>
+            <field name="value">30</field>
+            <field name="max_attendees">10</field>
+          </record>
+
+          <record id="training4" model="training.training">
+            <field name="name">Training 4</field>
+            <field name="value">40</field>
+            <field name="max_attendees">10</field>
+          </record>
+
+    </data>
+</odoo>
