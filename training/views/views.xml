@@ -23,23 +23,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-
-    <!-- server action to the one above -->
-
-    <record model="ir.actions.server" id="training.action_server">
-      <field name="name">training server</field>
-      <field name="model_id" ref="model_training_training"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
-
-
     <!-- Top menu item -->
 
     <menuitem name="training" id="training.menu_root"/>
@@ -47,14 +30,11 @@
     <!-- menu categories -->
 
     <menuitem name="Menu 1" id="training.menu_1" parent="training.menu_root"/>
-    <menuitem name="Menu 2" id="training.menu_2" parent="training.menu_root"/>
 
     <!-- actions -->
 
     <menuitem name="List" id="training.menu_1_list" parent="training.menu_1"
               action="training.action_window"/>
-    <menuitem name="Server to list" id="training" parent="training.menu_2"
-              action="training.action_server"/>
 
   </data>
 </odoo>
