@@ -1,4 +1,6 @@
-from .. import util
+from odoo.addons.training.migrations import util
+
+
 def migrate(cr, version):
 
     util.remove_menus(cr, 'training', [
