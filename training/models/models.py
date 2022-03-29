@@ -18,6 +18,7 @@ class training(models.Model):
     value2 = fields.Float(compute="_value_pc", store=True)
     average = fields.Float(compute="_training_average")
     description = fields.Text()
+    partner_id = fields.Many2one("res.partner", "Partner")
 
     @api.depends('value')
     def _value_pc(self):
@@ -28,6 +29,7 @@ class training(models.Model):
         return [
             ("name", populate.constant('Training_{counter}')),
             ("value", populate.randfloat(0, 100)),
+            ("partner_id", populate.randomize(self.env['res.partner'].search([]).ids + [False])),
         ]
 
     def _training_average(self):
