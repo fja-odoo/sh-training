@@ -33,6 +33,5 @@ class training(models.Model):
         ]
 
     def _training_average(self):
-        for record in self:
-            records = self.search([])
-            record.average = sum(records.mapped('value')) / len(records)
+        avg = self.read_group([], ['average:avg(value)'], [])
+        self.average = avg[0]['average'] if len(avg) else 0
