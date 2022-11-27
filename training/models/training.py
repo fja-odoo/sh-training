@@ -19,6 +19,7 @@ class training(models.Model):
     expected_revenue = fields.Float(compute="_compute_expected_revenue", store=True)
     profitability = fields.Float(compute="_compute_profitability")
     description = fields.Text()
+    partner_id = fields.Many2one("res.partner", "Partner")
 
     @api.depends('value', 'max_attendees')
     def _compute_expected_revenue(self):
@@ -36,4 +37,5 @@ class training(models.Model):
             ("name", populate.constant('Training_{counter}')),
             ("value", populate.randfloat(0, 100)),
             ("max_attendees", populate.randfloat(1, 50)),
+            ("partner_id", populate.randomize(self.env['res.partner'].search([]).ids + [False])),
         ]
