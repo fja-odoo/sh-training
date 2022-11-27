@@ -27,10 +27,9 @@ class training(models.Model):
             record.expected_revenue = record.value * record.max_attendees
 
     def _compute_profitability(self):
+        average_expected_revenue = self.read_group([], ['expected_revenue:avg'], [])[0]['expected_revenue']
         for record in self:
-            trainings = self.search([])
-            average = sum(trainings.mapped('expected_revenue')) / len(trainings)
-            record.profitability =  average / record.expected_revenue if record.expected_revenue else 0
+            record.profitability =  average_expected_revenue / record.expected_revenue if record.expected_revenue else 0
 
     def _populate_factories(self):
         return [

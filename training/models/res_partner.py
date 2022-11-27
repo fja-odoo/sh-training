@@ -9,5 +9,10 @@ class Partner(models.Model):
     training_value = fields.Integer("Training Value", compute="_compute_training_value")
 
     def _compute_training_value(self):
+        trainings = self.env['training.training'].read_group([("partner_id", "in", self.ids)], ['value:sum'], ['partner_id'])
+        counts = {
+            training['partner_id'][0]: training['value']
+            for training in trainings
+        }
         for partner in self:
-            partner.training_value = sum(self.env["training.training"].search([("partner_id", "=", partner.id)]).mapped('value'))
+            partner.training_value = counts.get(partner.id, 0)
