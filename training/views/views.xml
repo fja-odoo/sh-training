@@ -8,12 +8,24 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
+          <field name="partner_id"/>
           <field name="value"/>
           <field name="max_attendees"/>
           <field name="expected_revenue"/>
           <field name="profitability" widget="percentage"/>
         </tree>
       </field>
+    </record>
+
+    <record id="res_partner_view_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="training_value"/>
+            </xpath>
+        </field>
     </record>
 
 
