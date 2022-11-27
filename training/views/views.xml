@@ -11,6 +11,7 @@
           <field name="value"/>
           <field name="max_attendees"/>
           <field name="expected_revenue"/>
+          <field name="profitability" widget="percentage"/>
         </tree>
       </field>
     </record>
